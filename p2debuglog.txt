@@ -1,0 +1,97 @@
+Reading symbols from a.out...
+(gdb) info break
+
+Num     Type           Disp Enb Address            What
+
+1       breakpoint     keep y   0x0000000000001243 in input_height at main.c:14
+(gdb) run
+Starting program: /home/a.out 
+
+Breakpoint 2, main () at main.c:43
+43          radius = input_radius();
+(gdb) step
+input_radius () at main.c:6
+6       {
+(gdb) next
+8          printf("Enter radius\n");
+(gdb) next
+Enter radius
+9          scanf("%f",&radius);
+(gdb) next
+1
+10         return radius;
+(gdb) p radius
+$1 = 1
+(gdb) next
+11      }
+(gdb) next
+main () at main.c:44
+44          height = input_height();
+(gdb) step
+
+Breakpoint 1, input_height () at main.c:14
+14      {
+(gdb) next
+16         printf("Enter height\n");
+(gdb) next
+Enter height
+17         scanf("%f",&height);
+(gdb) next
+1
+18         return height;
+(gdb) next
+19      }
+(gdb) next
+main () at main.c:45
+45          length = input_length();
+(gdb) step
+input_length () at main.c:22
+22      {
+(gdb) next
+24         printf("Enter length\n");
+(gdb) next
+Enter length
+25         scanf("%f",&length);
+(gdb) next
+1
+26         return length;
+(gdb) next
+27      }
+(gdb) next
+main () at main.c:46
+46          weight = find_weight(radius, height, length);
+(gdb) step
+find_weight (radius=3.0611365e-41, height=1.46594909e+13, length=0)
+    at main.c:30
+30      {
+(gdb) next
+31          float weight = PI * pow(radius,3) * sqrt(height * length);
+(gdb) p weight
+$2 = 2.73646377e-14
+(gdb) next
+32          return weight;
+(gdb) p weight
+$3 = 3.1415
+(gdb) next
+33      }
+(gdb) next
+main () at main.c:47
+47          output(radius, height, length, weight);
+(gdb) step
+output (radius=3.1415, height=1.96577114e+37, length=1, weight=-9.35522677e+33)
+    at main.c:36
+36      {
+(gdb) next
+37          printf("The weight of the camel with stomach radius = %f, height = %f, length = %f is %f\n",radius, height, length, weight);
+(gdb) next
+The weight of the camel with stomach radius = 1.000000, height = 1.000000, length = 1.000000 is 3.141500
+38      }
+(gdb) next
+main () at main.c:48
+48          return 0;
+(gdb) next
+49      }
+(gdb) continue
+Continuing.
+[Inferior 1 (process 92) exited normally]
+(gdb) 
