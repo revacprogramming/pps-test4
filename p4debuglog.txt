@@ -1,0 +1,65 @@
+Reading symbols from a.out...
+(gdb) run
+Starting program: /home/a.out 
+
+Breakpoint 1, main () at main.c:60
+60          c=input();
+(gdb) step
+input () at main.c:10
+10      {
+(gdb) next
+12        printf("Enter radius, height, length of a camel\n");
+(gdb) next
+Enter radius, height, length of a camel
+13        scanf("%f%f%f",&c.radius, &c.height, &c.length);
+(gdb) next
+1 1 1
+14        return c;
+(gdb) next
+15       }
+(gdb) next
+main () at main.c:61
+61          mood = check_mood(c);
+(gdb) step
+check_mood (c=...) at main.c:21
+21       {
+(gdb) step
+22          if( c.radius < c.height && c.radius < c.length) 
+(gdb) step
+26          else if ( c.height < c.length && c.height < c.radius )
+(gdb) step
+30          else if ( c.length < c.height && c.length < c.radius) 
+(gdb) step
+35            return 3;
+(gdb) step
+37        }
+(gdb) next
+main () at main.c:62
+62          output(c,mood);
+(gdb) step
+output (c=..., mood=-502162971) at main.c:41
+41       {
+(gdb) p mood
+$1 = -502162971
+(gdb) step
+42            if ( mood == 0 ) {
+(gdb) p mood
+$2 = 3
+(gdb) next
+45            else if ( mood == 1 ) {
+(gdb) next
+48            else if (mood == 2 ) {
+(gdb) next
+52                printf("Camel is in an uknown mood\n");
+(gdb) next
+Camel is in an uknown mood
+54       }
+(gdb) next
+main () at main.c:63
+63          return 0;
+(gdb) continue
+Continuing.
+[Inferior 1 (process 4374) exited normally]
+(gdb) Quit
+
+(gdb) 
