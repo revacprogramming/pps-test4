@@ -10,6 +10,12 @@ struct camel {
   float radius, height, length,weight; 
 }; 
 typedef struct camel Camel; 
+#include <stdio.h>
+
+struct camel { 
+  float radius, height, length,weight; 
+}; 
+typedef struct camel Camel; 
 
 
 Camel input()
@@ -33,7 +39,7 @@ Camel input()
     {
       return 1;
     }
-    else if ( c.length < c.height && c.lenght < c.radius) 
+    else if ( c.length < c.height && c.length < c.radius) 
     {
       return 2;
     }
@@ -57,7 +63,6 @@ Camel input()
       else {
           printf("Camel is in an uknown mood\n");
       }
-      return 0;
  }
   
  int main()
